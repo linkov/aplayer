@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E64a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Y5-0h-GmB">
+                                <rect key="frame" x="0.0" y="20" width="600" height="900"/>
+                                <color key="backgroundColor" red="0.0" green="0.6588235294" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Phr-Bl-Whh">
+                                <rect key="frame" x="275.5" y="949" width="51" height="31"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="onTintColor" red="0.57255244755244761" green="0.66882134408531468" blue="0.89874687200839154" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="didSwitchPlay:" destination="BYZ-38-t0r" eventType="valueChanged" id="hye-60-t4k"/>
+                                </connections>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.6588235294" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="4Y5-0h-GmB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Fdq-y6-15h"/>
+                            <constraint firstItem="4Y5-0h-GmB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WDR-I9-ioC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Y5-0h-GmB" secondAttribute="bottom" constant="80" id="eyF-lz-fpT"/>
+                            <constraint firstItem="Phr-Bl-Whh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qXb-yX-UXP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Phr-Bl-Whh" secondAttribute="bottom" constant="20" id="xKp-WX-ShL"/>
+                            <constraint firstAttribute="trailing" secondItem="4Y5-0h-GmB" secondAttribute="trailing" id="yZw-N9-eeQ"/>
+                        </constraints>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="1000"/>
+                    <connections>
+                        <outlet property="playSwitch" destination="Phr-Bl-Whh" id="EQL-Zh-H5Q"/>
+                        <outlet property="tableView" destination="4Y5-0h-GmB" id="mQl-JS-X5r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="511" y="417"/>
+        </scene>
+    </scenes>
+</document>
