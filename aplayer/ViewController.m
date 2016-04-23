@@ -45,8 +45,8 @@
 
 @property (strong, nonatomic) IBOutlet UISwitch *playSwitch;
 
-@property (nonatomic, strong) AEBandpassFilter *bandpass;
-@property (nonatomic, strong) AELowPassFilter *lowpass;
+//@property (nonatomic, strong) AEBandpassFilter *bandpass;
+//@property (nonatomic, strong) AELowPassFilter *lowpass;
 
 @property (nonatomic, strong) AEReverbFilter *reverb;
 @property (nonatomic, strong) AEDelayFilter *delay1;
@@ -79,49 +79,55 @@
     [_audioController addChannels:@[_playthrough]];
 
 
-
-    self.bandpass = [AEBandpassFilter new];
-    self.bandpass.centerFrequency = 525;
-    self.bandpass.bandwidth = 1000;
-    
-    [_audioController addFilter:self.bandpass toChannel:self.playthrough];
+//
+//    self.bandpass = [AEBandpassFilter new];
+//    self.bandpass.centerFrequency = 5410;
+//    self.bandpass.bandwidth = 8200;
+//    
+//    [_audioController addFilter:self.bandpass toChannel:self.playthrough];
 
 
     self.delay1 = [[AEDelayFilter alloc] init];
-    self.delay1.wetDryMix = 0;
-    self.delay1.delayTime = 0.25;
+    self.delay1.wetDryMix = 14;
+    self.delay1.delayTime = 0.98;
     self.delay1.feedback = 85;
+    self.delay1.lopassCutoff = 15000;
 
     [_audioController addFilter:self.delay1 toChannel:self.playthrough];
 
 
 
     self.delay2 = [[AEDelayFilter alloc] init];
-    self.delay2.wetDryMix = 65;
-    self.delay2.feedback = 70;
-    self.delay2.delayTime = 0.7;
+    self.delay2.wetDryMix = 25;
+    self.delay2.feedback = 88;
+    self.delay2.delayTime = 0.02;
 
 
     [_audioController addFilter:self.delay2 toChannel:self.playthrough];
 
 
-    self.lowpass = [AELowPassFilter new];
-    self.lowpass.cutoffFrequency = 4500;
-    self.lowpass.resonance = 5;
-    [_audioController addFilter:self.lowpass toChannel:self.playthrough];
+//    self.lowpass = [AELowPassFilter new];
+//    self.lowpass.cutoffFrequency = 4500;
+//    self.lowpass.resonance = 5;
+//    [_audioController addFilter:self.lowpass toChannel:self.playthrough];
 
 
     self.reverb = [[AEReverbFilter alloc] init];
-    self.reverb.dryWetMix = 35;
+    self.reverb.minDelayTime = 0.009984;
     self.reverb.decayTimeAtNyquist = 12;
+    self.reverb.decayTimeAt0Hz = 9;
+    self.reverb.filterGain = 0;
+    self.reverb.dryWetMix = 100;
+    self.reverb.maxDelayTime = 0.077430;
+    self.reverb.gain = 20;
      [_audioController addFilter:self.reverb toChannel:self.playthrough];
 
 
 
 
-    SDWFilterWrap *filter1 = [SDWFilterWrap new];
-    filter1.filter = self.bandpass;
-    filter1.name = @"Bandpass";
+//    SDWFilterWrap *filter1 = [SDWFilterWrap new];
+//    filter1.filter = self.bandpass;
+//    filter1.name = @"Bandpass";
 
     SDWFilterWrap *filter2 = [SDWFilterWrap new];
     filter2.filter = self.delay1;
@@ -133,16 +139,17 @@
     filter3.name = @"Delay";
 
 
-    SDWFilterWrap *filter4 = [SDWFilterWrap new];
-    filter4.filter = self.lowpass;
-    filter4.name = @"Lowpass";
+//    SDWFilterWrap *filter4 = [SDWFilterWrap new];
+//    filter4.filter = self.lowpass;
+//    filter4.name = @"Lowpass";
 
 
     SDWFilterWrap *filter5 = [SDWFilterWrap new];
     filter5.filter = self.reverb;
     filter5.name = @"Reverb";
 
-    self.filters = @[filter1,filter2,filter3,filter4,filter5];
+    //self.filters = @[filter1,filter2,filter3,filter4,filter5];
+    self.filters = @[filter2,filter3,filter5];
 
 
     NSMutableDictionary *propertiesToFilters = [NSMutableDictionary dictionary];
